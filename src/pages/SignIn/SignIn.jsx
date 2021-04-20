@@ -1,8 +1,11 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useHistory } from 'react-router';
 
 const SignIn = () => {
+  const history = useHistory();
+
   const validateSchema = Yup.object().shape({
     email: Yup.string().email('Invalid Email').required('Email is required'),
 
@@ -24,23 +27,22 @@ const SignIn = () => {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
 
-          //   await fetch('http://localhost:5000/register', {
-          //     method: 'post',
-          //     headers: { 'Content-Type': 'application/json' },
-          //     body: JSON.stringify({
-          //       email: values.email,
-          //       password: values.password,
-          //     }),
-          //   })
-          //     .then((res) => res.json())
-          //     .then((data) => {
-          //       if (data === 'Successful') {
-          //         alert('Successful');
-          //         resetForm();
-          //       } else {
-          //         alert('Something went wrong');
-          //       }
-          //     });
+          await fetch('http://localhost:5000/signin', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: values.email,
+              password: values.password,
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.email) {
+                history.push('/homepage');
+              } else {
+                alert('Incorrect Credentials');
+              }
+            });
 
           setSubmitting(false);
         }}

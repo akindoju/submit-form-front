@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './RegisterUser.css';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useHistory } from 'react-router';
 
 const RegisterUser = () => {
+  const history = useHistory();
+
   const validateSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(2, 'Name should be at least 2 characters')
+      .required('Name is required'),
+
     email: Yup.string().email('Invalid Email').required('Email is required'),
 
     password: Yup.string()
@@ -22,6 +29,7 @@ const RegisterUser = () => {
       <h2>Register User</h2>
       <Formik
         initialValues={{
+          name: '',
           email: '',
           password: '',
           confirmPassword: '',
@@ -34,6 +42,7 @@ const RegisterUser = () => {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+              name: values.name,
               email: values.email,
               password: values.password,
             }),
@@ -41,8 +50,7 @@ const RegisterUser = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data === 'Successful') {
-                alert('Successful');
-                resetForm();
+                history.push('/homepage');
               } else {
                 alert('Something went wrong');
               }
@@ -64,6 +72,21 @@ const RegisterUser = () => {
             <form onSubmit={handleSubmit}>
               <div className="credentials">
                 <input
+                  type="name"
+                  name="name"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.name}
+                  required
+                />
+                <label htmlFor="name">Name</label>
+                <div className="errMsg-span">
+                  {errors.name && touched.name ? errors.name : null}
+                </div>
+              </div>
+
+              <div className="credentials">
+                <input
                   type="email"
                   name="email"
                   onChange={handleChange}
@@ -76,6 +99,7 @@ const RegisterUser = () => {
                   {errors.email && touched.email ? errors.email : null}
                 </div>
               </div>
+
               <div className="credentials">
                 <input
                   type="password"
@@ -90,6 +114,7 @@ const RegisterUser = () => {
                   {errors.password && touched.password ? errors.password : null}
                 </div>
               </div>
+
               <div className="credentials">
                 <input
                   type="password"
