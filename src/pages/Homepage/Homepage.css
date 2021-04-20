@@ -1,0 +1,19 @@
+.user {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.user__btn {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.user__btn--1 {
+  margin-right: 50px;
+}
+
+.user__btn--2 {
+  margin-left: 50px;
+}

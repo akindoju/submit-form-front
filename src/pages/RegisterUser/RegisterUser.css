@@ -1,0 +1,103 @@
+body {
+  font-family: 'Lato', sans-serif;
+  padding: 3rem;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.signInContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  /* background: rgba(0, 0, 0, 0.1); */
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.signInContainer h2 {
+  margin-bottom: 15px;
+  font-size: 35px;
+  margin: 0 0 30px;
+  padding: 0;
+  color: black;
+  text-align: center;
+}
+
+.errMsg-span {
+  transform: translateY(-25px);
+  font-size: 15px;
+  color: red;
+}
+
+.signInContainer .credentials {
+  position: relative;
+}
+
+.signInContainer .credentials input,
+.signInContainer .credentials select {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: black;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  background: transparent;
+}
+
+.signInContainer .credentials label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: black;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.signInContainer .credentials input:focus ~ label,
+.signInContainer .credentials input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #003e68;
+  font-size: 13px;
+}
+
+/* styling suggestion box */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px rgb(255, 255, 255) inset !important;
+  box-shadow: 0 0 0 30px rgb(255, 255, 255) inset !important;
+}
+
+.formBtn {
+  cursor: pointer;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all 0.2s;
+  position: relative;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+}
+
+.formBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.formBtn:active {
+  transform: translate(1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
