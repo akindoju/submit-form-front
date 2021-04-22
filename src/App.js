@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage/Homepage';
 import UsersPage from './pages/UsersPage/UsersPage';
 import SignIn from './pages/SignIn/SignIn';
 import LogPage from './pages/LogPage/LogPage';
+import Profile from './pages/Profile/Profile';
 
 const App = () => {
   return (
@@ -24,6 +25,9 @@ const App = () => {
         </Route>
         <Route path="/log" exact>
           <LogPage />
+        </Route>
+        <Route path="/profile" exact>
+          <Profile />
         </Route>
       </Switch>
     </div>
