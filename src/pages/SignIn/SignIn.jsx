@@ -39,8 +39,10 @@ const SignIn = () => {
             .then((data) => {
               if (data.email) {
                 history.push('/homepage');
-              } else {
+              } else if (data === 'Incorrect credentials') {
                 alert('Incorrect Credentials');
+              } else {
+                alert('Something went wrong');
               }
             });
 

@@ -1,24 +1,31 @@
-.user {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.row {
+  max-width: 114rem;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.user__btn {
+.row:not(:last-child) {
+  margin-bottom: 8rem;
+}
+
+.row::after {
+  display: table;
+  content: '';
+  clear: both;
+}
+
+.row [class^='col'] {
+  float: left;
+}
+.row [class^='col']:not(:last-child) {
+  margin-right: 6rem;
+}
+
+.row .col-1-of-4 {
+  width: calc((100% - (3 * 6rem)) / 4);
+}
+
+.btn {
   cursor: pointer;
   padding: 10px;
-}
-
-.user__btn--1 {
-  margin-right: 50px;
-}
-
-.user__btn--2 {
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
-.user__btn--3 {
-  margin-left: 50px;
 }

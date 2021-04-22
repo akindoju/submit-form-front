@@ -6,34 +6,45 @@ const Users = () => {
   const history = useHistory();
 
   return (
-    <div className="user">
-      <button
-        className="user__btn user__btn--1"
-        onClick={(e) => {
-          e.preventDefault();
-          history.push('/register');
-        }}
-      >
-        Register
-      </button>
-      <button
-        className="user__btn user__btn--2"
-        onClick={(e) => {
-          e.preventDefault();
-          history.push('/users');
-        }}
-      >
-        Get Users
-      </button>
-      <button
-        className="user__btn user__btn--3"
-        onClick={(e) => {
-          e.preventDefault();
-          history.push('/');
-        }}
-      >
-        Sign In
-      </button>
+    <div className="homepageContainer">
+      <div className="row">
+        <button
+          className="col-1-of-4 btn"
+          onClick={(e) => {
+            e.preventDefault();
+            history.push('/register');
+          }}
+        >
+          Register
+        </button>
+        <button
+          className="col-1-of-4 btn"
+          onClick={(e) => {
+            e.preventDefault();
+            history.push('/users');
+          }}
+        >
+          Get Users
+        </button>
+        <button
+          className="col-1-of-4 btn"
+          onClick={(e) => {
+            e.preventDefault();
+            history.push('/');
+          }}
+        >
+          Sign In
+        </button>
+        <button
+          className="col-1-of-4 btn"
+          onClick={(e) => {
+            e.preventDefault();
+            history.push('/log');
+          }}
+        >
+          Log
+        </button>
+      </div>
     </div>
   );
 };

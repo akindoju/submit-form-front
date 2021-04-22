@@ -4,6 +4,7 @@ import RegisterUser from './pages/RegisterUser/RegisterUser';
 import Homepage from './pages/Homepage/Homepage';
 import UsersPage from './pages/UsersPage/UsersPage';
 import SignIn from './pages/SignIn/SignIn';
+import LogPage from './pages/LogPage/LogPage';
 
 const App = () => {
   return (
@@ -20,6 +21,9 @@ const App = () => {
         </Route>
         <Route path="/users" exact>
           <UsersPage />
+        </Route>
+        <Route path="/log" exact>
+          <LogPage />
         </Route>
       </Switch>
     </div>
