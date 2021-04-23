@@ -1,8 +1,11 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useHistory } from 'react-router';
 
 const DeleteUser = () => {
+  const history = useHistory();
+
   const validateSchema = Yup.object().shape({
     email: Yup.string().email('Invalid Email').required('Email is required'),
 
@@ -26,7 +29,7 @@ const DeleteUser = () => {
           confirmPassword: '',
         }}
         validationSchema={validateSchema}
-        onSubmit={async (values, { setSubmitting, resetForm }) => {
+        onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(true);
 
           await fetch('http://localhost:5000/delete', {
@@ -40,7 +43,7 @@ const DeleteUser = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data === 'Successful') {
-                alert('Successful');
+                history.push('/');
               } else {
                 alert('Something went wrong');
               }
