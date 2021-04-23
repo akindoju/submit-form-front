@@ -45,7 +45,7 @@ const DeleteUser = () => {
               if (data === 'Successful') {
                 history.push('/');
               } else {
-                alert('Something went wrong');
+                alert('Seems something wants you to keep this profile');
               }
             });
 
