@@ -2,19 +2,15 @@ import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-const UpdateProfile = () => {
+const UpdateUser = () => {
   const validateSchema = Yup.object().shape({
-    currentName: Yup.string()
-      .min(2, 'Current Name should be at least 2 characters')
-      .required('Current Name is required'),
+    currentEmail: Yup.string()
+      .email('Invalid Email')
+      .required('Current Email is required'),
 
     newName: Yup.string()
       .min(2, 'New Name should be at least 2 characters')
       .required('New Name is required'),
-
-    currentEmail: Yup.string()
-      .email('Invalid Email')
-      .required('Current Email is required'),
 
     newEmail: Yup.string()
       .email('Invalid Email')
@@ -26,7 +22,6 @@ const UpdateProfile = () => {
       <h2>Update Profile</h2>
       <Formik
         initialValues={{
-          currentName: '',
           newName: '',
           currentEmail: '',
           newEmail: '',
@@ -39,9 +34,8 @@ const UpdateProfile = () => {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              currentName: values.currentName,
-              newName: values.newName,
               currentEmail: values.currentEmail,
+              newName: values.newName,
               newEmail: values.newEmail,
             }),
           })
@@ -71,17 +65,17 @@ const UpdateProfile = () => {
             <form onSubmit={handleSubmit}>
               <div className="credentials">
                 <input
-                  type="name"
-                  name="currentName"
+                  type="email"
+                  name="currentEmail"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.currentName}
+                  value={values.currentEmail}
                   required
                 />
-                <label htmlFor="currentName">Current Name</label>
+                <label htmlFor="currentEmail">Current Email</label>
                 <div className="errMsg-span">
-                  {errors.currentName && touched.currentName
-                    ? errors.currentName
+                  {errors.currentEmail && touched.currentEmail
+                    ? errors.currentEmail
                     : null}
                 </div>
               </div>
@@ -98,23 +92,6 @@ const UpdateProfile = () => {
                 <label htmlFor="newName">New Name</label>
                 <div className="errMsg-span">
                   {errors.newName && touched.newName ? errors.newName : null}
-                </div>
-              </div>
-
-              <div className="credentials">
-                <input
-                  type="email"
-                  name="currentEmail"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.currentEmail}
-                  required
-                />
-                <label htmlFor="currentEmail">Current Email</label>
-                <div className="errMsg-span">
-                  {errors.currentEmail && touched.currentEmail
-                    ? errors.currentEmail
-                    : null}
                 </div>
               </div>
 
@@ -144,4 +121,4 @@ const UpdateProfile = () => {
   );
 };
 
-export default UpdateProfile;
+export default UpdateUser;

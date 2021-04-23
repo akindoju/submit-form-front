@@ -6,7 +6,8 @@ import UsersPage from './pages/UsersPage/UsersPage';
 import SignIn from './pages/SignIn/SignIn';
 import LogPage from './pages/LogPage/LogPage';
 import Profile from './pages/Profile/Profile';
-import UpdateProfile from './pages/UpdateProfile/UpdateProfile';
+import UpdateProfile from './pages/UpdateUser/UpdateUser';
+import DeleteUser from './pages/DeleteUser/DeleteUser';
 
 const App = () => {
   return (
@@ -32,6 +33,9 @@ const App = () => {
         </Route>
         <Route path="/update" exact>
           <UpdateProfile />
+        </Route>
+        <Route path="/delete" exact>
+          <DeleteUser />
         </Route>
       </Switch>
     </div>
