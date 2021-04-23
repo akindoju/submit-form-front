@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './RegisterUser.css';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
