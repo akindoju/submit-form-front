@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './UsersPage.css';
 
 const UsersPage = () => {
   const [users, setUsers] = useState([]);
