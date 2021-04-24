@@ -7,7 +7,8 @@ import SignIn from './pages/SignIn/SignIn';
 import LogPage from './pages/LogPage/LogPage';
 import Profile from './pages/Profile/Profile';
 import DeleteUser from './pages/DeleteUser/DeleteUser';
-import UpdateName from './pages/UpdateUser/UpdateUser';
+import UpdateName from './pages/UpdateName/UpdateName';
+import UpdateEmail from './pages/UpdateEmail/UpdateEmail';
 
 const App = () => {
   return (
@@ -33,6 +34,9 @@ const App = () => {
         </Route>
         <Route path="/update-name" exact>
           <UpdateName />
+        </Route>
+        <Route path="/update-email" exact>
+          <UpdateEmail />
         </Route>
         <Route path="/delete" exact>
           <DeleteUser />

@@ -2,40 +2,34 @@ import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-const UpdateUser = () => {
+const UpdateEmail = () => {
   const validateSchema = Yup.object().shape({
     currentEmail: Yup.string()
       .email('Invalid Email')
       .required('Current Email is required'),
 
-    newName: Yup.string()
-      .min(2, 'New Name should be at least 2 characters')
-      .required('New Name is required'),
-
     newEmail: Yup.string()
       .email('Invalid Email')
-      .required('New Email is required'),
+      .required('Current Email is required'),
   });
 
   return (
     <div className="signInContainer">
-      <h2>Update Profile</h2>
+      <h2>Update Email</h2>
       <Formik
         initialValues={{
-          newName: '',
-          currentEmail: '',
           newEmail: '',
+          currentEmail: '',
         }}
         validationSchema={validateSchema}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
 
-          await fetch('http://localhost:5000/update', {
+          await fetch('http://localhost:5000/update/email', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               currentEmail: values.currentEmail,
-              newName: values.newName,
               newEmail: values.newEmail,
             }),
           })
@@ -83,21 +77,6 @@ const UpdateUser = () => {
               <div className="credentials">
                 <input
                   type="name"
-                  name="newName"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.newName}
-                  required
-                />
-                <label htmlFor="newName">New Name</label>
-                <div className="errMsg-span">
-                  {errors.newName && touched.newName ? errors.newName : null}
-                </div>
-              </div>
-
-              <div className="credentials">
-                <input
-                  type="email"
                   name="newEmail"
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -121,4 +100,4 @@ const UpdateUser = () => {
   );
 };
 
-export default UpdateUser;
+export default UpdateEmail;
