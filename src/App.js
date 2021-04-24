@@ -6,8 +6,8 @@ import UsersPage from './pages/UsersPage/UsersPage';
 import SignIn from './pages/SignIn/SignIn';
 import LogPage from './pages/LogPage/LogPage';
 import Profile from './pages/Profile/Profile';
-import UpdateProfile from './pages/UpdateUser/UpdateUser';
 import DeleteUser from './pages/DeleteUser/DeleteUser';
+import UpdateName from './pages/UpdateUser/UpdateUser';
 
 const App = () => {
   return (
@@ -31,8 +31,8 @@ const App = () => {
         <Route path="/profile" exact>
           <Profile />
         </Route>
-        <Route path="/update" exact>
-          <UpdateProfile />
+        <Route path="/update-name" exact>
+          <UpdateName />
         </Route>
         <Route path="/delete" exact>
           <DeleteUser />

@@ -47,6 +47,15 @@ const LogPage = () => {
           </td>
         </tr>
       </table>
+      <button
+        className="printBtn"
+        onClick={(event) => {
+          event.preventDefault();
+          window.print();
+        }}
+      >
+        Print
+      </button>
     </div>
   );
 };

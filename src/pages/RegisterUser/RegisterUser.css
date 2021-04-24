@@ -92,12 +92,30 @@ input:-webkit-autofill:active {
   color: white;
 }
 
-.formBtn:hover {
+.printBtn {
+  cursor: pointer;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all 0.2s;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+}
+
+.formBtn:hover,
+.printBtn:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.formBtn:active {
+.formBtn:active,
+.printBtn:active {
   transform: translate(1px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
