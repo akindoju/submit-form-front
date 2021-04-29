@@ -37,12 +37,13 @@ const SignIn = () => {
           })
             .then((res) => res.json())
             .then((data) => {
+              console.log(data);
               if (data.email) {
                 history.push('/homepage');
               } else if (data === 'Incorrect credentials') {
                 alert('Incorrect Credentials');
               } else {
-                alert('Something went wrong');
+                alert('Incorrect Credentials');
               }
             });
 
@@ -58,7 +59,6 @@ const SignIn = () => {
           touched,
           values,
           errors,
-          isSubmitting,
         }) => {
           return (
             <form onSubmit={handleSubmit}>

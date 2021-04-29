@@ -1,12 +1,14 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useHistory } from 'react-router';
 
 const UpdateName = () => {
+  const history = useHistory();
+  const currentEmail = sessionStorage.getItem('currentEmail');
+
   const validateSchema = Yup.object().shape({
-    email: Yup.string()
-      .email('Invalid Email')
-      .required('Current Email is required'),
+    email: Yup.string().email('Invalid Email').required('Email is required'),
 
     newName: Yup.string()
       .min(2, 'New Name should be at least 2 characters')
@@ -29,7 +31,7 @@ const UpdateName = () => {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              email: values.email,
+              email: currentEmail,
               newName: values.newName,
             }),
           })
@@ -37,6 +39,7 @@ const UpdateName = () => {
             .then((data) => {
               if (data === 'Successful') {
                 alert('Successful');
+                history.push('/');
                 resetForm();
               } else {
                 alert('Something went wrong');
@@ -63,7 +66,7 @@ const UpdateName = () => {
                   name="email"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.email}
+                  value={currentEmail}
                   required
                 />
                 <label htmlFor="email">Email</label>

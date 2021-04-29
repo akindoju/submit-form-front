@@ -1,8 +1,12 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useHistory } from 'react-router';
 
 const UpdatePassword = () => {
+  const history = useHistory();
+  const currentEmail = sessionStorage.getItem('currentEmail');
+
   const validateSchema = Yup.object().shape({
     email: Yup.string()
       .email('Invalid Email')
@@ -35,7 +39,7 @@ const UpdatePassword = () => {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              email: values.email,
+              email: currentEmail,
               newPassword: values.newPassword,
             }),
           })
@@ -43,6 +47,7 @@ const UpdatePassword = () => {
             .then((data) => {
               if (data === 'Successful') {
                 alert('Successful');
+                history.push('/');
                 resetForm();
               } else {
                 alert('Something went wrong');
@@ -69,7 +74,7 @@ const UpdatePassword = () => {
                   name="email"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.email}
+                  value={currentEmail}
                   required
                 />
                 <label htmlFor="email">Email</label>
