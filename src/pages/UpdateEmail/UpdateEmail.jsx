@@ -3,6 +3,8 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 const UpdateEmail = () => {
+  const currentEmail = sessionStorage.getItem('currentEmail');
+
   const validateSchema = Yup.object().shape({
     currentEmail: Yup.string()
       .email('Invalid Email')
@@ -38,8 +40,10 @@ const UpdateEmail = () => {
               if (data === 'Successful') {
                 alert('Successful');
                 resetForm();
+              } else if (data.code === 'ER_DUP_ENTRY') {
+                alert('New Email already exists');
               } else {
-                alert('Something went wrong');
+                alert('Something Went wrong');
               }
             });
 
@@ -63,7 +67,7 @@ const UpdateEmail = () => {
                   name="currentEmail"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.currentEmail}
+                  value={currentEmail}
                   required
                 />
                 <label htmlFor="currentEmail">Current Email</label>

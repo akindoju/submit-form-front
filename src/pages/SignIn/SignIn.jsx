@@ -46,6 +46,8 @@ const SignIn = () => {
               }
             });
 
+          sessionStorage.setItem('currentEmail', values.email);
+
           setSubmitting(false);
         }}
       >
