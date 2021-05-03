@@ -42,9 +42,9 @@ const UpdateEmail = () => {
             .then((data) => {
               if (data === 'Successful') {
                 alert('Successful');
-                // history.push('/');
                 resetForm();
                 setCurrentEmailValue(values.newEmail);
+                history.push('/');
               } else if (data.code === 'ER_DUP_ENTRY') {
                 alert('New Email already exists');
               } else {

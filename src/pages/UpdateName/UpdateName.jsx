@@ -37,7 +37,7 @@ const UpdateName = () => {
             .then((data) => {
               if (data === 'Successful') {
                 alert('Successful');
-                history.push('/');
+                history.push('/homepage');
                 resetForm();
               } else {
                 alert('Something went wrong');
