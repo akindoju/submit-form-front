@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useHistory } from 'react-router';
@@ -6,6 +6,7 @@ import { useHistory } from 'react-router';
 const UpdateEmail = () => {
   const history = useHistory();
   const currentEmail = sessionStorage.getItem('currentEmail');
+  const [currentEmailValue, setCurrentEmailValue] = useState(currentEmail);
 
   const validateSchema = Yup.object().shape({
     // currentEmail: Yup.string()
@@ -41,8 +42,12 @@ const UpdateEmail = () => {
             .then((data) => {
               if (data === 'Successful') {
                 alert('Successful');
-                history.push('/');
+                // history.push('/');
                 resetForm();
+                sessionStorage.clear();
+                setCurrentEmailValue(values.newEmail);
+                console.log(values.currentEmail, 'Current Email');
+                console.log(values.newEmail, 'New Email');
               } else if (data.code === 'ER_DUP_ENTRY') {
                 alert('New Email already exists');
               } else {
@@ -70,7 +75,7 @@ const UpdateEmail = () => {
                   name="currentEmail"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={currentEmail}
+                  value={currentEmailValue}
                   required
                 />
                 <label htmlFor="currentEmail">Current Email</label>

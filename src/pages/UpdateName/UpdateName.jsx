@@ -8,8 +8,6 @@ const UpdateName = () => {
   const currentEmail = sessionStorage.getItem('currentEmail');
 
   const validateSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid Email').required('Email is required'),
-
     newName: Yup.string()
       .min(2, 'New Name should be at least 2 characters')
       .required('New Name is required'),
@@ -56,7 +54,6 @@ const UpdateName = () => {
           touched,
           values,
           errors,
-          isSubmitting,
         }) => {
           return (
             <form onSubmit={handleSubmit}>
