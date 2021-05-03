@@ -44,10 +44,7 @@ const UpdateEmail = () => {
                 alert('Successful');
                 // history.push('/');
                 resetForm();
-                sessionStorage.clear();
                 setCurrentEmailValue(values.newEmail);
-                console.log(values.currentEmail, 'Current Email');
-                console.log(values.newEmail, 'New Email');
               } else if (data.code === 'ER_DUP_ENTRY') {
                 alert('New Email already exists');
               } else {

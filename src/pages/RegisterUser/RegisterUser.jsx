@@ -51,8 +51,8 @@ const RegisterUser = () => {
             .then((data) => {
               if (data === 'Successful') {
                 history.push('/homepage');
-              } else {
-                alert('Something went wrong');
+              } else if ((data.code = 'ER_DUP_ENTRY')) {
+                alert('Email already exists');
               }
             });
 
