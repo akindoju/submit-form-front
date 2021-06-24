@@ -2,7 +2,15 @@ table,
 th,
 td {
   border: 1px solid black;
-  padding: 10px;
+  padding: 7px;
+}
+
+table {
+  margin-top: 80px;
+}
+
+th {
+  font-size: 22px;
 }
 
 .list {
@@ -10,4 +18,30 @@ td {
   text-align: center;
   margin-bottom: 15px;
   border-bottom: 1px solid black;
+}
+
+.exportBtn {
+  cursor: pointer;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all 0.2s;
+  position: absolute;
+  top: 40px;
+  right: 50px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+}
+
+.exportBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.exportBtn:active {
+  transform: translate(1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }

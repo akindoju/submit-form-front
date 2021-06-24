@@ -99,9 +99,9 @@ input:-webkit-autofill:active {
   display: inline-block;
   border-radius: 100px;
   transition: all 0.2s;
-  position: fixed;
-  top: 10px;
-  left: 10px;
+  position: absolute;
+  top: 40px;
+  left: 50px;
   border: none;
   outline: none;
   background-color: black;

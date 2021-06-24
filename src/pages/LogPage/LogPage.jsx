@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import './LogPage.css';
+import React, { useEffect, useState } from "react";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import "./LogPage.css";
 
 const LogPage = () => {
   const [users, setUsers] = useState([]);
@@ -17,7 +18,7 @@ const LogPage = () => {
 
   return (
     <div>
-      <table>
+      <table id="logTable">
         <tr>
           <th>Email</th>
           <th>Password</th>
@@ -56,6 +57,14 @@ const LogPage = () => {
       >
         Print
       </button>
+
+      <ReactHTMLTableToExcel
+        className="exportBtn"
+        table="logTable"
+        filename="attempts log"
+        sheet="sheet 1"
+        buttonText="Export to Excel"
+      />
     </div>
   );
 };
