@@ -73,7 +73,7 @@ const RegisterUser = () => {
               <div className="credentials">
                 <input
                   type="name"
-                  name="name"
+                  id="name"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.name}
@@ -88,7 +88,7 @@ const RegisterUser = () => {
               <div className="credentials">
                 <input
                   type="email"
-                  name="email"
+                  id="email"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
@@ -103,7 +103,7 @@ const RegisterUser = () => {
               <div className="credentials">
                 <input
                   type="password"
-                  name="password"
+                  id="password"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
@@ -118,7 +118,7 @@ const RegisterUser = () => {
               <div className="credentials">
                 <input
                   type="password"
-                  name="confirmPassword"
+                  id="confirmPassword"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.confirmPassword}
