@@ -1,17 +1,17 @@
-import React from 'react';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-import { useHistory } from 'react-router';
+import React from "react";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import { useHistory } from "react-router";
 
 const SignIn = () => {
   const history = useHistory();
 
   const validateSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid Email').required('Email is required'),
+    email: Yup.string().email("Invalid Email").required("Email is required"),
 
     password: Yup.string()
-      .min(6, 'Password should be at least 6 characters')
-      .required('Password is required'),
+      .min(6, "Password should be at least 6 characters")
+      .required("Password is required"),
   });
 
   return (
@@ -19,17 +19,17 @@ const SignIn = () => {
       <h2>Sign In</h2>
       <Formik
         initialValues={{
-          email: '',
-          password: '',
-          confirmPassword: '',
+          email: "",
+          password: "",
+          confirmPassword: "",
         }}
         validationSchema={validateSchema}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
 
-          await fetch('http://localhost:5000/signin', {
-            method: 'post',
-            headers: { 'Content-Type': 'application/json' },
+          await fetch("http://localhost:5000/signin", {
+            method: "post",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               email: values.email,
               password: values.password,
@@ -39,15 +39,15 @@ const SignIn = () => {
             .then((data) => {
               console.log(data);
               if (data.email) {
-                history.push('/homepage');
-              } else if (data === 'Incorrect credentials') {
-                alert('Incorrect Credentials');
+                history.push("/homepage");
+              } else if (data === "Incorrect credentials") {
+                alert("Incorrect Credentials");
               } else {
-                alert('Incorrect Credentials');
+                alert("Incorrect Credentials");
               }
             });
 
-          sessionStorage.setItem('currentEmail', values.email);
+          sessionStorage.setItem("currentEmail", values.email);
 
           setSubmitting(false);
         }}
@@ -65,7 +65,7 @@ const SignIn = () => {
               <div className="credentials">
                 <input
                   type="email"
-                  name="email"
+                  id="email"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
@@ -79,7 +79,7 @@ const SignIn = () => {
               <div className="credentials">
                 <input
                   type="password"
-                  name="password"
+                  id="password"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
